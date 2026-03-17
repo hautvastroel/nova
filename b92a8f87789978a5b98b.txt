@@ -4,3 +4,8 @@ uv venv --python 3.12
 source .venv/bin/activate && uv pip install -e .
 uv pip install transformers accelerate datasets peft bitsandbytes jsonlines vllm huggingface_hub
 -------------------------------------------------------------------------------------
+base_model_1 : wisercat/Affine-0310-ed22-5DRnEyfqFrqJivv1qqi9DDygWtruiyoL4YsYQcsyBqRHtuff
+base_model_2 : EdmondMillion/affine-21-5EqseVmNEu57jbsnYKYahsBYWYZTSfmnoxedDmmQyxJctYdr
+
+alpha 0.3
+uv pip install "transformers==4.57.6"
