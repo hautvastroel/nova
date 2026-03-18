@@ -1,0 +1,30 @@
+Here is a guide to change chute hotkey.
+You can check your chutes account info using this api. (userId, username, payment address, balance and so on. )
+
+curl -s https://api.chutes.ai/users/me -H "Authorization: [chutes_api_key]"
+
+You can change the coldkey & hotkey using this api.
+
+curl -XPOST https://api.chutes.ai/users/change_bt_auth -H "Authorization: [chutes_account_fingerprint]" -H "Content-Type: application/json" -d '{"coldkey": "[your_coldkey]", "hotkey": "[your_hotkey]"}'
+
+After that, you should change the config.ini file. This file is commonly located at /root/.chutes/config.ini.
+
+[api]
+base_url = https://api.chutes.ai
+
+[auth]
+username = [chute_username]
+user_id = [chute_userid]
+hotkey_seed = [hotkey_seed]
+hotkey_name = [hotkey_wallet_name]
+hotkey_ss58address = [hotkey_ss58address]
+
+[payment]
+address = [payment_address]
+
+
+Note: After you reset hotkey, you must change the following fields: hotkey_name, hotkey_ss58address, hotkey_seed.
+For hotkey_seed, please remove the first two characters ("0x"). You can find this seed in your hoktey file as secretSeed field.
+
+
+By sending only one api, you can change the chute hotkey. That's all.
