@@ -3,3 +3,26 @@ base_model_2 : affineawe/affine-wc-5F7ep7ZCfuRugpnWRQdng5c9PB3j4pa5ZkCwvnjutThW4
 
 Please use transformer version 5.2.0.
 alpha=0.3
+
+Please replace this config in commands.py
+=============
+chute = build_sglang_chute(
+    username="{chute_user}",
+    readme="{repo}",
+    model_name="{repo}",
+    image="chutes/sglang:nightly-2026031300.tnightly",
+    concurrency=40,
+    revision="{revision}",
+    node_selector=NodeSelector(
+        gpu_count=2,
+        min_vram_gb_per_gpu=80,
+    ),
+    scaling_threshold=0.85,
+    max_instances=1,
+    shutdown_after_seconds=86400,
+    engine_args=(
+        "--mem-fraction-static 0.9 --tool-call-parser qwen25 "
+        "--context-length 65536"
+    ),
+)
+==============
